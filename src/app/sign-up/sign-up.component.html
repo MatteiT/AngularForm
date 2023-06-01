@@ -1,0 +1,44 @@
+<form #form="ngForm" (ngSubmit)="onSubmit()">
+    <fieldset>
+      <label for="email">Email</label>
+      <input type="email" id="email" name="email" [(ngModel)]="model.email" required email #email="ngModel">
+    </fieldset>
+  
+    <div *ngIf="email.errors">
+      <span *ngIf="email.errors['required']">Email is required</span>
+      <span *ngIf="email.errors['email']">Email must be a valid email address</span>
+    </div>
+  
+    <fieldset>
+      <label for="firstName">First Name</label>
+      <input type="text" id="firstname" name="firstname" [(ngModel)]="model.firstname" required minlength="3" maxlength="15" #firstname="ngModel">
+    </fieldset>
+  
+    <div *ngIf="firstname.errors">
+      <span *ngIf="firstname.errors['required']">First Name is required</span>
+      <span *ngIf="firstname.errors['minlength']">First Name must be at least 3 characters long.</span>
+      <span *ngIf="firstname.errors['maxlength']">First Name cannot be more than 15 characters long.</span>
+    </div>
+  
+    <fieldset class="form-group">
+      <label for="lastName">Last Name</label>
+      <input type="text" id="lastname" name="lastname" [(ngModel)]="model.lastname" required minlength="3" maxlength="15" #lastname="ngModel">
+    </fieldset>
+  
+    <div *ngIf="lastname.errors">
+      <span *ngIf="lastname.errors['required']">Last Name is required</span>
+      <span *ngIf="lastname.errors['minlength']">Last Name must be at least 3 characters long.</span>
+      <span *ngIf="lastname.errors['maxlength']">Last Name cannot be more than 15 characters long.</span>
+    </div>
+  
+    <fieldset class="form-group">
+      <label for="password">Password</label>
+        <input type="password" id="password" name="password" [(ngModel)]="model.password" required #password="ngModel">
+    </fieldset>
+  
+   <div *ngIf="password.errors">
+      <span *ngIf="password.errors['required']">Password is required</span>
+    </div>
+  
+    <button type="submit">Submit</button>
+  </form>
